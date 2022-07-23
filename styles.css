@@ -1,5 +1,18 @@
-/* div for grid */
-#grid {
+:root {
     margin: 0;
-    width: 960px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#grid {
+    display: grid;
+    width: 480px;
+    height: 480px;
+}
+
+.square {
+    border: 0.1px solid black;
 }
