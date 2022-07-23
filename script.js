@@ -1,10 +1,21 @@
-// Link container div for grid from HTML
-// Function to create square grid (16 x 16)
-// Insert into container div
+const containerGrid = document.getElementById('grid');
 
+let rows = 16;
+let columns = rows;
+let totalSquares = rows * columns;
 
-// Formatting for grid squares(outer and inner border)
+containerGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+containerGrid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 
+function createGrid() {
+    for (let i = 0; i < totalSquares; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        containerGrid.appendChild(square);
+    };
+};
+
+createGrid();
 
 // Function with event listeners for hovering over grid squares
 
