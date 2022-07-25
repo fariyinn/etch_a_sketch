@@ -8,6 +8,10 @@ document.getElementById('gridSizeButton').onclick = getGridSize;
 function getGridSize() {
     let newGridSize = parseInt(prompt('how many rows and columns would you like for your grid?', '16'));
 
+    if (newGridSize > 100) {
+        newGridSize = parseInt(prompt('Please enter a value below 100!', '16'));
+    };
+
     clearGrid();
     createGrid(newGridSize);
 };
