@@ -1,14 +1,27 @@
 const containerGrid = document.getElementById('grid');
 
-let rows = 16;
-let columns = rows;
-let totalSquares = rows * columns;
+const DEFAULT_SIZE = 16;
 
-containerGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-containerGrid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+document.getElementById('gridSizeButton').onclick = getGridSize;
 
-function createGrid() {
-    for (let i = 0; i < totalSquares; i++) {
+function getGridSize() {
+    let newGridSize = parseInt(prompt('how many rows and columns would you like for your grid?', '16'));
+
+    clearGrid();
+    createGrid(newGridSize);
+};
+
+function clearGrid() {
+    while (containerGrid.firstChild) {
+        containerGrid.removeChild(containerGrid.firstChild);
+      };
+};
+
+function createGrid(size) {
+    containerGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    containerGrid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    
+    for (let i = 0; i < (size * size); i++) {
         const square = document.createElement('div');
         square.classList.add('square');
         containerGrid.appendChild(square);
@@ -17,15 +30,9 @@ function createGrid() {
     };
 };
 
-// Function to change squares background color when hovered over
 function changeColor(e) {
     e.target.style.backgroundColor = '#000';
 };
-
-// Add button that makes a pop up asking for number of squares per side for grid (max: 100)
-// Removes existing grid
-// Generate new grid in same space (max width: 960px)
-
 
 // Add button to choose rainbow pen
 // Function to change squares background color to random RGB value when hovered over
@@ -34,4 +41,4 @@ function changeColor(e) {
 // Add button to choose gradient to black pen
 // Function to change squares background color to 10% of black per hover, and with 10 hovers it should be fully black
 
-createGrid();
+createGrid(DEFAULT_SIZE);
