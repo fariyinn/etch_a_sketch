@@ -1,6 +1,7 @@
 const containerGrid = document.getElementById('grid');
 
 const DEFAULT_SIZE = 16;
+const DEFAULT_COLOR = '#000';
 
 document.getElementById('gridSizeButton').onclick = getGridSize;
 
@@ -31,7 +32,7 @@ function createGrid(size) {
 };
 
 function changeColor(e) {
-    e.target.style.backgroundColor = '#000';
+    e.target.style.backgroundColor = DEFAULT_COLOR;
 };
 
 // Add button to choose rainbow pen
