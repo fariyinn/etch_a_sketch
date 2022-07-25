@@ -12,16 +12,15 @@ function createGrid() {
         const square = document.createElement('div');
         square.classList.add('square');
         containerGrid.appendChild(square);
+
+        square.addEventListener('mouseover', changeColor);
     };
 };
 
-createGrid();
-
-// Function with event listeners for hovering over grid squares
-
-
 // Function to change squares background color when hovered over
-
+function changeColor(e) {
+    e.target.style.backgroundColor = '#000';
+};
 
 // Add button that makes a pop up asking for number of squares per side for grid (max: 100)
 // Removes existing grid
@@ -34,3 +33,5 @@ createGrid();
 
 // Add button to choose gradient to black pen
 // Function to change squares background color to 10% of black per hover, and with 10 hovers it should be fully black
+
+createGrid();
