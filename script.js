@@ -1,11 +1,14 @@
 const containerGrid = document.getElementById('grid');
 
 let rainbowMode;
+let eraser;
 
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#000';
+const DEFAULT_ERASER = '#FFF';
 
 document.getElementById('rainbowButton').onclick = activateRainbowMode;
+document.getElementById('eraser').onclick = activateEraser;
 
 document.getElementById('gridSizeButton').onclick = getGridSize;
 
@@ -40,12 +43,20 @@ function createGrid(size) {
 };
 
 function activateRainbowMode() {
+    eraser = false;
     rainbowMode = true;
+};
+
+function activateEraser() {
+    rainbowMode = false;
+    eraser = true;
 };
 
 function changeColor(e) {
     if (rainbowMode == true) {
         e.target.style.backgroundColor = generateRandomColor();
+    } else if (eraser == true) {
+        e.target.style.backgroundColor = DEFAULT_ERASER;  
     } else {
         e.target.style.backgroundColor = DEFAULT_COLOR;
     };
