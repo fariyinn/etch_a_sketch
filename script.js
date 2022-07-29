@@ -44,21 +44,24 @@ function createGrid(size) {
     };
 };
 
-function activateRainbow() {
+function removeCurrentColor() {
     eraser = false;
+    rainbow = false;
     black = false;
+};
+
+function activateRainbow() {
+    removeCurrentColor();
     rainbow = true;
 };
 
 function activateEraser() {
-    rainbow = false;
-    black = false;
+    removeCurrentColor();
     eraser = true;
 };
 
 function activateBlack() {
-    rainbow = false;
-    eraser = false;
+    removeCurrentColor();
     black = true;
 };
 
