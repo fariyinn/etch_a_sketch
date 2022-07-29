@@ -3,6 +3,7 @@ const containerGrid = document.getElementById('grid');
 let rainbow;
 let eraser;
 let black;
+let gradient;
 
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#000';
@@ -11,6 +12,7 @@ const DEFAULT_ERASER = '#FFF';
 document.getElementById('rainbowButton').onclick = activateRainbow;
 document.getElementById('eraser').onclick = activateEraser;
 document.getElementById('black').onclick = activateBlack;
+document.getElementById('gradient').onclick = activateGradient;
 
 document.getElementById('gridSizeButton').onclick = getGridSize;
 
@@ -48,6 +50,7 @@ function removeCurrentColor() {
     eraser = false;
     rainbow = false;
     black = false;
+    gradient = false;
 };
 
 function activateRainbow() {
@@ -65,6 +68,11 @@ function activateBlack() {
     black = true;
 };
 
+function activateGradient() {
+    removeCurrentColor();
+    gradient = true;
+};
+
 function changeColor(e) {
     switch (true) {
         case (rainbow):
@@ -73,7 +81,12 @@ function changeColor(e) {
 
         case(eraser):
             e.target.style.backgroundColor = DEFAULT_ERASER;
-            break;  
+            break;
+
+        case(gradient):
+            e.target.style.backgroundImage = 'linear-gradient(to top left,' + generateRandomColor() + ',' + generateRandomColor() + 
+                                             ',' + generateRandomColor() + ',' + generateRandomColor() + ')';
+            break;
 
         case(black):
         default:
@@ -83,7 +96,11 @@ function changeColor(e) {
 };
 
 function generateRandomColor() {
-    return ('#' + Math.floor(Math.random()*(256 * 256 * 256)).toString(16).padStart(6,'0'));
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
 };
 
 // Add button to choose gradient to black pen
