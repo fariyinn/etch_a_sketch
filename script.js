@@ -1,7 +1,11 @@
 const containerGrid = document.getElementById('grid');
 
+let rainbowMode;
+
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#000';
+
+document.getElementById('rainbowButton').onclick = activateRainbowMode;
 
 document.getElementById('gridSizeButton').onclick = getGridSize;
 
@@ -35,13 +39,21 @@ function createGrid(size) {
     };
 };
 
-function changeColor(e) {
-    e.target.style.backgroundColor = DEFAULT_COLOR;
+function activateRainbowMode() {
+    rainbowMode = true;
 };
 
-// Add button to choose rainbow pen
-// Function to change squares background color to random RGB value when hovered over
+function changeColor(e) {
+    if (rainbowMode == true) {
+        e.target.style.backgroundColor = generateRandomColor();
+    } else {
+        e.target.style.backgroundColor = DEFAULT_COLOR;
+    };
+};
 
+function generateRandomColor() {
+    return ('#' + Math.floor(Math.random()*(256 * 256 * 256)).toString(16).padStart(6,'0'));
+};
 
 // Add button to choose gradient to black pen
 // Function to change squares background color to 10% of black per hover, and with 10 hovers it should be fully black
