@@ -73,11 +73,9 @@ function changeColor(e) {
             break;  
 
         case(black):
-            e.target.style.backgroundColor = DEFAULT_COLOR;
-            break;
-
         default:
             e.target.style.backgroundColor = DEFAULT_COLOR;
+            break;
     };
 };
 
