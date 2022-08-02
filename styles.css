@@ -13,3 +13,7 @@ body {
     height: 480px;
     border: 10px solid black;
 }
+
+.square:hover {
+    background-color: #A17188;
+}
