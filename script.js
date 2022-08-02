@@ -5,14 +5,20 @@ let eraser;
 let black;
 let gradient;
 
+let currentStroke = false;
+
 const DEFAULT_SIZE = 16;
-const DEFAULT_COLOR = '#000';
-const DEFAULT_ERASER = '#FFF';
+const DEFAULT_COLOR = 'rgba(0,0,0,1)';
+const DEFAULT_ERASER = 'rgba(0,0,0,0)';
 
 document.getElementById('rainbowButton').onclick = activateRainbow;
 document.getElementById('eraser').onclick = activateEraser;
 document.getElementById('black').onclick = activateBlack;
 document.getElementById('gradient').onclick = activateGradient;
+
+let toggleGridButton = document.getElementById('toggleGrid');
+toggleGridButton.onclick = toggleGrid;
+let gridLines = false;
 
 document.getElementById('gridSizeButton').onclick = getGridSize;
 
@@ -42,7 +48,24 @@ function createGrid(size) {
         square.classList.add('square');
         containerGrid.appendChild(square);
 
-        square.addEventListener('mouseover', changeColor);
+        containerGrid.addEventListener('click', createStroke);
+        square.addEventListener('dblclick', toggleOpacity);
+    };
+};
+
+function createStroke() {
+    const blocks = document.querySelectorAll('.square');
+    
+    if (!currentStroke) {
+        blocks.forEach((block) => {
+            block.addEventListener('mouseleave', changeColor);
+        });
+        currentStroke = true;
+    } else {
+        blocks.forEach((block) => {
+            block.removeEventListener('mouseleave', changeColor);
+        });
+        currentStroke = false;
     };
 };
 
@@ -84,8 +107,9 @@ function changeColor(e) {
             break;
 
         case(gradient):
-            e.target.style.backgroundImage = 'linear-gradient(to top left,' + generateRandomColor() + ',' + generateRandomColor() + 
-                                             ',' + generateRandomColor() + ',' + generateRandomColor() + ')';
+            e.target.style.backgroundImage = 'linear-gradient(to top left,' + generateRandomColor() +
+                                             ',' + generateRandomColor() + ',' + generateRandomColor() +
+                                             ',' + generateRandomColor() + ')';
             break;
 
         case(black):
@@ -99,11 +123,33 @@ function generateRandomColor() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
+    let a = Math.round(Math.random() * 10) / 10;
     
-    return 'rgb(' + r + ',' + g + ',' + b + ')';
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
 };
 
-// Add button to choose gradient to black pen
-// Function to change squares background color to 10% of black per hover, and with 10 hovers it should be fully black
+function toggleOpacity(e) {
+    e.target.style.opacity = Number(e.target.style.opacity) + 0.1; 
+};
+
+function toggleGrid() {
+    const blocks = document.querySelectorAll(".square");
+
+    if(gridLines == false) {
+        gridLines = true;
+
+        blocks.forEach((block) => {
+            block.style.border = '0.2px solid rgba(0,0,0,1)';
+        });
+    } else {
+        gridLines = true;
+
+        blocks.forEach((block) => {
+            block.style.border = '0px';
+        });
+        
+        gridLines = false; 
+    };
+};
 
 createGrid(DEFAULT_SIZE);
