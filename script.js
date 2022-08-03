@@ -23,6 +23,13 @@ let toggleGridButton = document.getElementById('toggleGrid');
 toggleGridButton.onclick = toggleGrid;
 let gridLines = false;
 
+let slider = document.getElementById('slider');
+
+slider.addEventListener('mouseup', () => {
+    clearGrid();
+    createGrid(slider.value);
+});
+
 document.getElementById('gridSizeButton').onclick = getGridSize;
 
 function getGridSize() {
