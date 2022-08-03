@@ -10,7 +10,6 @@ let currentStroke = false;
 
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = 'rgba(0,0,0,1)';
-const DEFAULT_ERASER = 'rgba(0,0,0,0)';
 
 document.getElementById('rainbowButton').onclick = activateRainbow;
 document.getElementById('eraser').onclick = activateEraser;
@@ -113,7 +112,7 @@ function changeColor(e) {
             break;
 
         case(eraser):
-            e.target.style.backgroundColor = DEFAULT_ERASER;
+            e.target.removeAttribute('style');
             break;
 
         case(gradient):
