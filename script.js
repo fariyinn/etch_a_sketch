@@ -4,6 +4,7 @@ let rainbow;
 let eraser;
 let black;
 let gradient;
+let customColor;
 
 let currentStroke = false;
 
@@ -15,6 +16,9 @@ document.getElementById('rainbowButton').onclick = activateRainbow;
 document.getElementById('eraser').onclick = activateEraser;
 document.getElementById('black').onclick = activateBlack;
 document.getElementById('gradient').onclick = activateGradient;
+
+let customColorPick = document.getElementById('customColor');
+customColorPick.onclick = activateCustomColor;
 
 let toggleGridButton = document.getElementById('toggleGrid');
 toggleGridButton.onclick = toggleGrid;
@@ -74,6 +78,7 @@ function removeCurrentColor() {
     rainbow = false;
     black = false;
     gradient = false;
+    customColor = false;
 };
 
 function activateRainbow() {
@@ -96,6 +101,11 @@ function activateGradient() {
     gradient = true;
 };
 
+function activateCustomColor() {
+    removeCurrentColor();
+    customColor = true;
+};
+
 function changeColor(e) {
     switch (true) {
         case (rainbow):
@@ -110,6 +120,10 @@ function changeColor(e) {
             e.target.style.backgroundImage = 'linear-gradient(to top left,' + generateRandomColor() +
                                              ',' + generateRandomColor() + ',' + generateRandomColor() +
                                              ',' + generateRandomColor() + ')';
+            break;
+
+        case(customColor):
+            e.target.style.backgroundColor = customColorPick.value;
             break;
 
         case(black):
