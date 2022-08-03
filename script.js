@@ -145,7 +145,7 @@ function toggleGrid() {
         gridLines = true;
 
         blocks.forEach((block) => {
-            block.style.border = '0px';
+            block.style.border = 'none';
         });
         
         gridLines = false; 
