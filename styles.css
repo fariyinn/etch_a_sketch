@@ -1,5 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Sevillana&display=swap');
+
 :root {
     margin: 0;
+    font-family: 'Sevillana', cursive;
+    --button-color: #879FB7;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: inherit;
+    font-size: 6vh;
+    margin-top: 0;
+    margin-bottom: 1vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sketchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: var(--button-color);
+}
+
+button, .gridSizeContainer, .toggleContainer, .gridSliderContainer, .pickerContainer {
+    color: white;
+    opacity: 0.8;
+    font-family: inherit;
+    font-size: 3vh;
+    width: 80vw;
+    text-align: center;
+    border-style: none;
+    border-radius: 40px;
+    margin: 10px;
+    transition: transform 1s;
+}
+
+button:hover, .toggleContainer:hover, .gridSliderContainer:hover, .pickerContainer:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    color: black;
+}
+
+.gridSizeContainer, .pickerContainer, .toggleContainer {
+    background-color: transparent;
+}
+
+input[type = 'color'] {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 10px;
+}
+
+.toggleContainer {
+    align-items: center;
+}
+
+input[type = 'range'] {
+    -webkit-appearance: none;
+    background-color: white;
+    width: 100%;
+}
+
+input[type = 'range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    background: white;
+}
+
+input[type = 'range']::-webkit-slider-runnable-track {
+    height: 30px;
+    width: 1000px;
+    border-radius: 25px;
+    background: black;
 }
 
 body {
@@ -9,9 +112,10 @@ body {
 
 #grid {
     display: grid;
-    width: 480px;
-    height: 480px;
+    width: 800px;
+    height: 800px;
     border: 10px solid black;
+    margin: 10px;
 }
 
 .square:hover {
@@ -19,9 +123,8 @@ body {
 }
 
 .toggle {
-    --width: 80px;
-    --height: calc(var(--width) / 3);
-
+    --width: 15vh;
+    --height: 4vh;
     position: relative;
     display: inline-block;
     width: var(--width);
@@ -73,8 +176,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    font-size: 10px;
-    font-family: sans-serif;
+    font-size: 5vw;
+    font-family: inherit;
+    margin-top: -6px;
+    margin-left: 90px;
     transition: all 0.4s ease-in-out;
     overflow: hidden;
 }
@@ -83,7 +188,7 @@ body {
     content: attr(data-off);
     position: absolute;
     right: 5px;
-    color: #fff;
+    color: black;
     opacity: 1;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     transition: all 0.4s ease-in-out;
@@ -107,4 +212,79 @@ body {
 .toggle input:checked~.labels::before {
     opacity: 1;
     transform: translateX(calc(var(--width) - var(--height)));
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--button-color);
+    height: 3vh;
+}
+
+.footerName {
+    color: white;
+    font-size: 2vh; 
+}
+
+#github {
+    color: black;
+    font-size: 2vh; 
+    padding: 10px;
+    transition: transform 1s;
+}
+
+#github:hover {
+    color: white;
+    transform: rotate(180deg) scale(1.5);
+}
+
+@media (min-width: 1000px) {
+    h1 {
+        font-size: 8vh;
+    }
+
+    #grid {
+        width: 600px;
+        height: 600px;
+    }
+
+    .toggle {
+        --width: 20vh;
+        --height: 6vh;
+    }
+
+    .toggle .labels {
+        font-size: 3vh;
+        margin-top: 0;
+        margin-left: 50px;
+    }
+
+    input[type = 'range'] {
+        width: 100%;
+    }
+
+    .sketchContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: none;
+        align-items: none;
+    }
+
+    button, .gridSizeContainer, .toggleContainer, .gridSliderContainer, .pickerContainer {
+        width: 20vw;
+        font-size: 5vh;
+    }
+
+    footer {
+        height: 6vh;
+    }
+
+    .footerName, #github {
+        font-size: 4vh;
+    }
 }
