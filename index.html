@@ -5,34 +5,53 @@
         <title>Etch-A-Sketch</title>
 
         <link rel = 'stylesheet' href = './styles.css'>
+        <script src = 'https://kit.fontawesome.com/93fc56fb23.js' crossorigin = 'anonymous'></script>
     </head>
     <body>
-        <h1>Etch-A-Sketch</h1>
-
-        <div class = 'buttons'>
-            <button id = 'gridSizeButton'>Choose Grid Size!</button>
-            <button id = 'rainbowButton'>Rainbow!</button>
-            <button id = 'eraser'>Eraser</button>
-            <button id = 'black'>Black</button>
-            <button id = 'gradient'>Gradient</button>
-
-            <label class = 'toggle'>
-                <input type = 'checkbox' id = 'toggleGrid'>
-                <span class = 'slider'></span>
-                <span class = 'labels' data-on = 'GRID' data-off = 'NO GRID'></span>
-            </label>
-
-            <label for = 'customColorPicker'>Pick a color:</label>
-            <input type = 'color' id = 'customColor' name = 'color' value = 'rgba(0,0,0,1)'>
-        </div>
-
-        <div id = 'grid'></div>
-        
-        <div id = 'gridSlider'>
-            <label for = 'slider'>SLIDE FOR GRID SIZE</label>
-            <input type = 'range' value = '16' min = '1' max = '100' id = 'slider'>
-        </div>
-        
+        <div class = 'wrapper'>
+            <div class = 'header'>
+                <h1>Etch-A-Sketch</h1>
+            </div>
+            <div class = 'sketchContainer'>
+                <div class = 'leftContainer'>
+                    <div class = 'toggleContainer'>
+                        <label class = 'toggle'>
+                            <input type = 'checkbox' id = 'toggleGrid'>
+                            <span class = 'slider'></span>
+                            <span class = 'labels' data-on = 'grid' data-off = 'off'></span>
+                        </label>
+                    </div>
+                    <div class = 'gridSliderContainer'>
+                        <div id = 'gridSlider'>
+                            <input type = 'range' value = '16' min = '1' max = '100' id = 'slider'>
+                        </div>
+                    </div>
+                </div>
+                <div class = 'gridContainer'>
+                    <div id = 'grid'></div>
+                </div>
+                <div class = 'buttons'>
+                    <div class = 'pickerContainer'>
+                        <input type = 'color' id = 'customColor' name = 'color' value = '#000000'/>
+                    </div>
+                    <button id = 'eraser'>Eraser</button>
+                    <button id = 'black'>Black</button>
+                    <button id = 'gradient'>Gradient</button>
+                    <button id = 'rainbowButton'>Rainbow</button>
+                    <button id = 'gridSizeButton'>Choose Grid Size</button>
+                </div>
+            </div>
+            <footer>
+                <p class = 'footerName'> fariyinn &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href = 'https://github.com/fariyinn' target = '_blank'>
+                        <i id = 'github' class = 'fa-brands fa-github-alt'></i>
+                    </a>
+                </p>
+            </footer>
+        </div>        
         <script src = './script.js'></script>
     </body>
 </html>
