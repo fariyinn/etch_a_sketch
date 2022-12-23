@@ -9,10 +9,10 @@ This was built as a submission for [The Odin Project](https://www.theodinproject
 ## Unique Features
 - [x] Favicon
 - [x] Color picker
-- [x] Window prompt
-- [x] Rainbow brush
 - [x] Creating grids
+- [x] Rainbow brush
 - [x] Gradient brush
+- [x] Window prompt
 - [x] DOM manipulation
 - [x] Slider for grid display
 - [x] Slider for changing grid size
